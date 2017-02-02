@@ -1,4 +1,6 @@
 /*
+  A post-operation function.
+
   Every time a user is created in our Scaphold API, subscribe them
   to a list in mailchimp.
 */
@@ -13,7 +15,7 @@ const MAILCHIMP_DC = 'XXXX';
  * @param {object} ctx.data - Will contain the payload from our scaphold logic function
  */
 module.exports = function(ctx, cb) {
-  const userPayload = ctx.data;
+  const userPayload = ctx.data.payload;
   if (!userPayload.changedUser || !userPayload.changedUser.username) {
     return cb(
       new Error('The logic payload does not contain a username with an email address')
